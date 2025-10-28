@@ -1,0 +1,426 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1d1e22 0%, #3d4148 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .container {
+            border-radius: 25px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            min-height: 600px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Panel Kiri - Info */
+        .left-panel {
+            background: linear-gradient(135deg, #1d1e22 0%, #2a2c32 100%);
+            color: white;
+            padding: 60px 50px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,93,86,0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logoImage {
+            margin-right: 0.4em;
+            display: flex;
+            align-items: center;
+        }
+
+        .logoImage ul {
+            list-style: none;
+            display: flex;
+            gap: 4px;
+        }
+
+        .logoImage ul li {
+            display: flex;
+        }
+
+        .logoImage div {
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            animation: colorPulse 3s infinite ease-in-out;
+            margin-right: 5px;
+        }
+
+        .logoImage div:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .logoImage div:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .logoImage div:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes colorPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(255,255,255,0); }
+            50% { transform: scale(1.2); box-shadow: 0 0 15px rgba(255,255,255,0.3); }
+        }
+
+        .tagline {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 16px;
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .features li:nth-child(1) { animation-delay: 0.2s; }
+        .features li:nth-child(2) { animation-delay: 0.4s; }
+        .features li:nth-child(3) { animation-delay: 0.6s; }
+        .features li:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .features li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: #ff5d56;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .features li:after {
+            content: "✓";
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Panel Kanan - Form */
+        .right-panel {
+            background: white;
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #1d1e22;
+            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 35px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 35px;
+            background: #f5f5f5;
+            padding: 6px;
+            border-radius: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            color: #666;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #1d1e22 0%, #2a2c32 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(29, 30, 34, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1d1e22;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(29, 30, 34, 0.05);
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1d1e22 0%, #2a2c32 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(29, 30, 34, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-content {
+            display: none;
+        }
+
+        .form-content.active {
+            display: block;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: #666;
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .forgot-password a:hover {
+            color: #1d1e22;
+        }
+
+        /* Responsive untuk Tablet (481px-768px) */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                max-width: 550px;
+                min-height: auto;
+            }
+
+            .left-panel, .right-panel {
+                padding: 40px 35px;
+            }
+
+            .logo {
+                font-size: 30px;
+            }
+
+            .tagline {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* Responsive untuk Ponsel (320px-480px) */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                border-radius: 20px;
+            }
+
+            .left-panel {
+                padding: 35px 25px;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+
+            .tagline {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .features li {
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+
+            .right-panel {
+                padding: 35px 25px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            .tab-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            input {
+                padding: 12px 12px 12px 40px;
+                font-size: 14px;
+            }
+
+            .submit-btn {
+                padding: 14px;
+                font-size: 15px;
+            }
+        }
+
+        /* Responsive untuk Desktop (1025px+) */
+        @media (min-width: 1025px) {
+            .container {
+                max-width: 1100px;
+            }
+        }

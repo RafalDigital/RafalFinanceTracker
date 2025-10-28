@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RafalFinance - Kelola Keuangan</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/Management.css">
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+            <div class="logoImage"><ul><li>
+            <div style="background-color: #ff5d56;"></div>
+            <div style="background-color: #fcba2b;"></div>
+            <div style="background-color: #28c73f;"></div>
+            </li></ul></div>
+            RafalFinance</div>
+            <div class="user-info">
+                <img class="Profile" src="../Image/Profile.png" alt="Profile">
+                <button class="menu-btn" id="menuBtn">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger-container" id="hamburgerMenu">
+        <div class="hamburger-header">
+            <span class="hamburger-title">Menu</span>
+            <button class="close-btn" id="closeBtn">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div class="hamburger-menu">
+            <a href="#" class="menu-item active"><i class="ri-dashboard-line"></i> Dashboard</a>
+            <a href="Settings.html"><i class="ri-settings-3-line"></i> Settings</a>
+            <a href="#" onclick="comingSoon()"><i class="ri-line-chart-line"></i> Analysis</a>
+        </div>
+        <button class="logout-btn" onclick="logout()">
+            <i class="ri-logout-box-line"></i> Keluar
+        </button>
+    </div>
+
+    <!-- Container Utama -->
+    <div class="container">
+        <!-- Card Saldo -->
+        <div class="balance-card">
+            <div class="balance-icon"><i class="ri-wallet-3-line"></i></div>
+            <div class="balance-label">Uang Saya Saat Ini</div>
+            <div class="balance-amount" id="currentBalance">Rp 0</div>
+        </div>
+
+        <!-- Card Tabungan -->
+        <div class="balance-card">
+            <div class="balance-icon"><i class="ri-safe-2-line"></i></div>
+            <div class="balance-label">Tabungan Saya Saat Ini</div>
+            <div class="balance-amount" id="currentsavingsBalance">Rp 0</div>
+        </div>
+
+        <!-- Form Tambah Laporan -->
+        <div class="form-card">
+            <h2 class="section-title"><i class="ri-file-list-3-line"></i> Tambah Laporan Keuangan</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="type"><i class="ri-exchange-line"></i> Jenis Transaksi</label>
+                    <select id="type">
+                        <option value="income">Pemasukan</option>
+                        <option value="expense">Pengeluaran</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name"><i class="ri-pencil-line"></i> Nama Laporan</label>
+                    <input type="text" id="name" placeholder="Misal: Gaji Bulanan">
+                </div>
+                <div class="form-group">
+                    <label for="amount"><i class="ri-money-dollar-circle-line"></i> Nominal (Rp)</label>
+                    <input type="number" id="amount" placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label for="date"><i class="ri-calendar-line"></i> Tanggal</label>
+                    <input type="date" id="date">
+                </div>
+            </div>
+            <button class="add-btn" onclick="addReport()">
+                Tambahkan Laporan
+            </button>
+        </div>
+
+        <!-- Form Tabungan -->
+        <div class="form-card">
+            <h2 class="section-title"><i class="ri-bank-line"></i> Tambah Laporan Tabungan</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="savingsType"><i class="ri-exchange-line"></i> Jenis Transaksi</label>
+                    <select id="savingsType">
+                        <option value="depositToSavings">Masukan</option>
+                        <option value="takeOutSavings">Ambil</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="savingsAmount"><i class="ri-money-dollar-circle-line"></i> Nominal (Rp)</label>
+                    <input type="number" id="savingsAmount" placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label for="savingsDate"><i class="ri-calendar-line"></i> Tanggal</label>
+                    <input type="date" id="savingsDate">
+                </div>
+            </div>
+            <button class="add-btn" onclick="addSavingsReport()">
+                Tambahkan Laporan
+            </button>
+        </div>
+
+        <!-- Laporan Keuangan -->
+        <h2 class="section-title"><i class="ri-history-line"></i> Riwayat Laporan Keuangan</h2>
+        <div class="reports-container" id="reportsContainer">
+            <!-- Empty State awal -->
+            <div class="empty-state">
+                <div class="empty-state-icon"><i class="ri-file-chart-line"></i></div>
+                <p>Belum ada laporan keuangan.<br>Tambahkan laporan pertama Anda!</p>
+            </div>
+        </div>
+
+        <!-- Laporan Tabungan -->
+        <h2 class="section-title"><i class="ri-history-line"></i> Riwayat Laporan Tabungan</h2>
+        <div class="reports-container" id="savingsReportsContainer">
+            <!-- Empty State awal -->
+            <div class="empty-state">
+                <div class="empty-state-icon"><i class="ri-file-chart-line"></i></div>
+                <p>Belum ada laporan tabungan.<br>Tambahkan laporan pertama Anda!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="customConfirmModal">
+        <div class="containerCustomConfirmModal">
+            <p id="confirmMessage"></p>
+            <div>
+                <button id="confirmCancelBtn">Batal</button>
+                <button id="confirmYesBtn">Ya</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="customAlertModal">
+        <div>
+            <p id="alertMessage"></p>
+            <button id="alertCloseBtn">OK</button>
+        </div>
+    </div>
+
+<script src="../Script/Management.js"></script>
+</body>
+</html>

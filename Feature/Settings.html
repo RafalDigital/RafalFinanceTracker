@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RafalFinance - Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/Settings.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logoImage"><ul><li>
+                <div style="background-color: #ff5d56;"></div>
+                <div style="background-color: #fcba2b;"></div>
+                <div style="background-color: #28c73f;"></div>
+                </li></ul></div>
+                RafalFinance
+            </div>
+            <a href="Management.html" class="back-btn">
+                <i class="ri-arrow-left-line"></i> Kembali
+            </a>
+        </div>
+    </header>
+
+    <div class="sidebar-mobile" id="sidebar-mobile">
+            <div class="sidebar-item-mobile active" onclick="showSectionMobile('profile')">
+                <i class="ri-user-line"></i>
+            </div>
+            <div class="sidebar-item-mobile" onclick="showSectionMobile('account')">
+                <i class="ri-shield-user-line"></i>
+            </div>
+        </div>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-item active" onclick="showSection('profile')">
+                <i class="ri-user-line"></i>
+                <span>Profile</span>
+            </div>
+            <div class="sidebar-item" onclick="showSection('account')">
+                <i class="ri-shield-user-line"></i>
+                <span>Account</span>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Profile Section -->
+            <div class="content-section active" id="profile-section">
+                <div class="content-card">
+                    <h2 class="section-title">Profile Settings</h2>
+                    <p class="section-subtitle">Kelola informasi profil Anda</p>
+
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="../Image/Profile.png" alt="Profile" id="profileImage">
+                            <button class="change-avatar-btn" onclick="changeAvatar()">
+                                <i class="ri-camera-line"></i>
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Nama Pengguna</h3>
+                            <p>Member sejak Oktober 2025</p>
+                        </div>
+                    </div>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="fullName">Nama Lengkap</label>
+                            <input type="text" id="fullName" placeholder="Masukkan nama lengkap" value="Nama Pengguna">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Masukkan username" value="userrafal">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" placeholder="Masukkan nomor telepon" value="+62 812-3456-7890">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <input type="text" id="bio" placeholder="Ceritakan tentang Anda" value="Pengguna RafalFinance">
+                        </div>
+                        <button type="button" class="save-btn" onclick="saveProfile()">
+                            <i class="ri-save-line"></i> Simpan Perubahan
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Account Section -->
+            <div class="content-section" id="account-section">
+                <div class="content-card">
+                    <h2 class="section-title">Account Settings</h2>
+                    <p class="section-subtitle">Kelola keamanan akun Anda</p>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Masukkan email" value="user@rafalfinance.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="currentPassword">Password Saat Ini</label>
+                            <input type="password" id="currentPassword" placeholder="Masukkan password saat ini">
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">Password Baru</label>
+                            <input type="password" id="newPassword" placeholder="Masukkan password baru">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Konfirmasi Password Baru</label>
+                            <input type="password" id="confirmPassword" placeholder="Ulangi password baru">
+                        </div>
+                        <button type="button" class="save-btn" onclick="saveAccount()">
+                            <i class="ri-shield-check-line"></i> Update Account
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="mobile-sidebar-toggle" onclick="toggleSidebar()">
+        <i class="ri-menu-line"></i>
+    </button>
+
+<script src="../Script/Settings.js"></script>
+</body>
+</html>

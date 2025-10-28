@@ -1,0 +1,763 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: white;
+    color: #1d1e22;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+}
+
+.logoImage {
+    margin-right: .5em;
+}
+
+.logo .logoImage ul {
+    list-style: none;
+}
+
+.logo .logoImage div {
+    margin-left: 5px;
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    transform: scale(1.2);
+}
+
+.logo .logoImage ul li div {
+    margin-bottom: 2px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info img {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.user-info img:hover {
+    box-shadow: 0 4px 20px rgba(29, 30, 34, .2);
+}
+
+/* Menu Button */
+.menu-btn {
+    background: transparent;
+    border: none;
+    color: #1d1e22;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Hamburger Menu */
+.hamburger-container {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 30px 30px 30px;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+    transition: right 0.4s cubic-bezier(0.4, 1, 0.4, 1);
+}
+
+.hamburger-container.active {
+    right: 0;
+}
+
+.hamburger-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(29, 30, 34, 0.1);
+}
+
+.hamburger-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1d1e22;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: #1d1e22;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hamburger-menu a {
+    color: #1d1e22;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+    background: rgba(29, 30, 34, 0.06);
+}
+
+.hamburger-menu .menu-item.active {
+    color: white;
+    background: #1d1e22;
+}
+
+.hamburger-menu a:hover {
+    background: rgba(29, 30, 34, 0.15);
+    transform: translateX(5px);
+}
+
+.hamburger-menu a.active {
+    background: rgba(29, 30, 34, 0.25);
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.hamburger-menu a i {
+    font-size: 20px;
+}
+
+.logout-btn {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid #1d1e22;
+    color: #1d1e22;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.logout-btn:hover {
+    background: #1d1e22;
+    color: #ff5d56;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Container Utama */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Card Saldo */
+.balance-card {
+    background: #1d1e22;
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.balance-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 48px;
+    opacity: 0.1;
+}
+
+.balance-label {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.balance-amount {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+/* Section Judul */
+.section-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title i {
+    font-size: 28px;
+}
+
+/* Form Tambah Laporan */
+.form-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+label i {
+    font-size: 16px;
+}
+
+input, select {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #1d1e22;
+}
+
+.add-btn {
+    background: #1d1e22;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* Laporan Keuangan - Card Horizontal */
+.reports-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 2em;
+    height: 17em;
+    padding: 1em;
+    overflow: auto;
+}
+
+.report-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.report-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.report-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.report-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.income-icon {
+    background: linear-gradient(135deg, #28c73f 0%, #5ae06e 100%);
+    color: white;
+}
+
+.expense-icon {
+    background: linear-gradient(135deg, #ff5d56 0%, #ff8882 100%);
+    color: white;
+}
+
+.savings-deposit-icon {
+    background: linear-gradient(135deg, #fcba2b 0%, #fdd15e 100%);
+    color: white;
+}
+
+.savings-withdraw-icon {
+    background: linear-gradient(135deg, #ff5d56 0%, #fcba2b 100%);
+    color: white;
+}
+
+.report-info {
+    flex: 1;
+}
+
+.report-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.report-date {
+    font-size: 13px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.report-date i {
+    font-size: 14px;
+}
+
+.report-right {
+    text-align: right;
+    position: relative;
+}
+
+.report-amount {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.income-amount {
+    color: #28c73f;
+}
+
+.expense-amount {
+    color: #ff5d56;
+}
+
+.savings-deposit-amount {
+    color: #fcba2b;
+}
+
+.savings-withdraw-amount {
+    color: #ff5d56;
+}
+
+.report-type {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Delete Button */
+.delete-btn {
+    background: #ff5d56;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 8px;
+    position: absolute;
+    top: 50%; /* Posisikan vertikal di tengah */
+    right: 80px; /* Jarak dari kanan kartu */
+    transform: translateY(-30%); /* Penyesuaian agar benar-benar di tengah */
+}
+
+.delete-btn:hover {
+    background: #ff3838;
+}
+
+.delete-btn i {
+    font-size: 14px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+}
+
+.empty-state-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.empty-state-icon i {
+    font-size: 64px;
+}
+
+/* Confirm */
+#customConfirmModal {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    z-index: 9999; 
+    display: none; 
+    align-items: center; 
+    justify-content: center;
+}
+
+#customConfirmModal .containerCustomConfirmModal{
+    background: white; 
+    padding: 25px; 
+    border-radius: 10px; 
+    width: 350px;
+    text-align: center; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#confirmMessage {
+    font-size: 16px; 
+    font-weight: 600;
+    margin-bottom: 20px; 
+    color: #1d1e22;
+}
+
+.containerCustomConfirmModal div{
+    display: flex; 
+    justify-content: space-around; 
+    gap: 10px;
+}
+
+#confirmCancelBtn {
+    flex: 1; 
+    padding: 15px 20px; 
+    border: none; 
+    background: rgba(29, 30, 34, 0.06); 
+    border-radius: 6px; 
+    cursor: pointer; 
+    transition: 0.2s;
+}
+
+#confirmYesBtn {
+    flex: 1; 
+    padding: 15px 20px; 
+    border: none; 
+    background: #1d1e22; 
+    color: white; 
+    font-weight: bold; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    transition: 0.2s;
+}
+
+#confirmCancelBtn:hover{
+    background: rgba(29, 30, 34, 0.15);
+    transform: translateY(-5px);
+}
+
+#confirmYesBtn:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+/* Alert */
+#customAlertModal {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    z-index: 9998; 
+    display: none; 
+    align-items: center; 
+    justify-content: center;
+}
+
+#customAlertModal div {
+    background: white; 
+    padding: 25px; 
+    border-radius: 10px; 
+    width: 350px;
+    text-align: center; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#alertMessage {
+    font-size: 16px; 
+    margin-bottom: 20px; 
+    font-weight: 600;
+    color: #1d1e22;
+}
+
+#alertCloseBtn {
+    padding: 15px 20px; 
+    border: none; 
+    background: #1d1e22; 
+    color: white; 
+    font-weight: bold; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    transition: 0.2s;
+}
+
+#alertCloseBtn:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+/* Responsive untuk Tablet dan Ponsel Besar (481px-768px) */
+@media (max-width: 768px) {
+    .hamburger-container {
+        width: 280px;
+    }
+
+    .balance-card {
+        padding: 30px;
+    }
+
+    .balance-amount {
+        font-size: 36px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .report-card {
+        /* flex-direction: column; */
+        align-items: flex-start;
+        gap: 15px;
+        position: relative;
+    }
+
+    .report-left {
+        width: 100%;
+    }
+
+    .report-right {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    
+    .report-amount {
+        font-size: 22px;
+        font-weight: bold;
+    }
+    
+    .report-type {
+        font-size: 12px;
+        color: #888;
+        margin-top: 5px; 
+        margin-bottom: 10px;
+    }
+
+    .user-info img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Responsive untuk Ponsel Portrait (320px-480px) */
+@media (max-width: 480px) {
+    .hamburger-container {
+        width: 100%;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logoImage {
+        display: none;
+    }
+
+    .user-info {
+        font-size: 14px;
+    }
+
+    .user-info img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .menu-btn {
+        font-size: 24px;
+    }
+
+    .balance-card {
+        padding: 25px;
+    }
+
+    .balance-amount {
+        font-size: 32px;
+    }
+
+    .balance-icon {
+        font-size: 36px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .section-title i {
+        font-size: 22px;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .report-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .report-name {
+        font-size: 16px;
+    }
+
+    .report-amount {
+        font-size: 20px;
+    }
+
+    .delete-btn {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
+
+/* Responsive untuk Layar Kecil/Laptop (769px-1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

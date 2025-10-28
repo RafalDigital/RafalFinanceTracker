@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RafalFinance - Kelola Keuangan Anda</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="Css/index.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Panel Kiri -->
+        <div class="left-panel">
+            <div class="logo">
+                <div class="logoImage">
+                    <ul>
+                        <li>
+                            <div style="background-color: #ff5d56;"></div>
+                            <div style="background-color: #fcba2b;"></div>
+                            <div style="background-color: #28c73f;"></div>
+                        </li>
+                    </ul>
+                </div>
+                RafalFinance
+            </div>
+            <div class="tagline">Kelola keuangan Anda dengan mudah, cerdas, dan efisien</div>
+            <ul class="features">
+                <li>Catat pemasukan & pengeluaran secara real-time</li>
+                <li>Lihat laporan keuangan yang detail</li>
+                <li>Pantau saldo dan tabungan Anda</li>
+                <li>Interface modern yang mudah digunakan</li>
+            </ul>
+        </div>
+
+        <!-- Panel Kanan -->
+        <div class="right-panel">
+            <div class="form-container">
+                <h2>Selamat Datang!</h2>
+                <p class="subtitle">Masuk atau buat akun untuk memulai</p>
+                
+                <!-- Tab Buttons -->
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showForm('login')">Masuk</button>
+                    <button class="tab-btn" onclick="showForm('register')">Daftar</button>
+                </div>
+
+                <!-- Form Login -->
+                <div id="login-form" class="form-content active">
+                    <form>
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <div class="input-wrapper">
+                                <i class="ri-mail-line input-icon"></i>
+                                <input type="email" id="login-email" placeholder="contoh@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="input-wrapper">
+                                <i class="ri-lock-password-line input-icon"></i>
+                                <input type="password" id="login-password" placeholder="Masukkan password" required>
+                            </div>
+                        </div>
+                        <div class="forgot-password">
+                            <a href="#">Lupa password?</a>
+                        </div>
+                        <button type="button" class="submit-btn" onclick="goToManagement()">
+                            <!-- Masuk -->
+                             Demo
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Form Register -->
+                <div id="register-form" class="form-content">
+                    <form>
+                        <div class="form-group">
+                            <label for="register-name">Nama Lengkap</label>
+                            <div class="input-wrapper">
+                                <i class="ri-user-line input-icon"></i>
+                                <input type="text" id="register-name" placeholder="Masukkan nama lengkap" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <div class="input-wrapper">
+                                <i class="ri-mail-line input-icon"></i>
+                                <input type="email" id="register-email" placeholder="contoh@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <div class="input-wrapper">
+                                <i class="ri-lock-password-line input-icon"></i>
+                                <input type="password" id="register-password" placeholder="Buat password" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm">Konfirmasi Password</label>
+                            <div class="input-wrapper">
+                                <i class="ri-lock-password-line input-icon"></i>
+                                <input type="password" id="register-confirm" placeholder="Ulangi password" required>
+                            </div>
+                        </div>
+                        <button type="button" class="submit-btn" onclick="goToManagement()">
+                            <!-- Daftar Sekarang -->
+                             Demo
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle antara form login dan register
+        function showForm(formType) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const tabs = document.querySelectorAll('.tab-btn');
+
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                tabs[0].classList.add('active');
+                tabs[1].classList.remove('active');
+            } else {
+                registerForm.classList.add('active');
+                loginForm.classList.remove('active');
+                tabs[1].classList.add('active');
+                tabs[0].classList.remove('active');
+            }
+        }
+
+        // Redirect ke halaman management
+        function goToManagement() {
+            window.location.href = 'Feature/Management.html';
+        }
+    </script>
+</body>
+</html>
